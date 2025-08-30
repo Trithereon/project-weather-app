@@ -26,45 +26,35 @@
   </head>
   <body>
     <div class="main-wrapper">
-      <!-- Sidebar -->
-      <aside class="sidebar-wrapper" id="sidebar-wrapper">
-        <div class="sidebar-header">
-          <button class="sidebar-action" id="site-title" data-action="home">
-            Template
+      <!-- Header -->
+      <header>
+        <div class="dropdown">
+          <button data-dropdown="toggle">
+            <svg viewBox="0 0 10 8" width="32">
+              <path
+                d="M1 1h8M1 4h 8M1 7h8"
+                stroke="#000"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
+            </svg>
           </button>
-          <a
-            href="https://www.flaticon.com/free-icons/macaroni"
-            title="macaroni icons"
-          >
-            <img
-              src="./img/site-logo.png"
-              alt="Macaroni logo"
-              class="site-logo"
-            />
-          </a>
-        </div>
-        <nav class="sidebar-nav">
-          <ul class="nav-main-list">
-            <li class="nav-main-item">
-              <button class="sidebar-action" data-action="navNewTask">
-                Create New Task
-              </button>
+          <ul class="dropdown-list">
+            <li class="dropdown-item">
+              <button class="dropdown-button">First Menu Item</button>
             </li>
-            <li class="nav-main-item">
-              <button class="sidebar-action" data-action="home">
-                Projects
-              </button>
-              <ul class="nav-sub-list">
-                <li class="nav-sub-item" id="sidebar-create-new-project">
-                  <button class="sidebar-action" data-action="navNewProject">
-                    Create New Project
-                  </button>
-                </li>
-              </ul>
+            <li class="dropdown-item">
+              <button class="dropdown-button">Second Menu Item</button>
+            </li>
+            <li class="dropdown-item">
+              <button class="dropdown-button">Third Menu Item</button>
             </li>
           </ul>
-        </nav>
-      </aside>
+        </div>
+
+        <label for="search">Enter City Name: </label>
+        <input type="search" id="search" />
+      </header>
       <!-- Main Content -->
       <main class="main-content" id="main-content">
         <dialog id="dialog-card-add-new-task">
