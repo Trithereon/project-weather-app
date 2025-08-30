@@ -57,52 +57,9 @@
       </header>
       <!-- Main Content -->
       <main class="main-content" id="main-content">
-        <dialog id="dialog-card-add-new-task">
-          <p>Add New Task (* required)</p>
-          <form id="form-card-add-new-task">
-            <div>
-              <label for="title-card-task">Title*:</label>
-              <input
-                type="text"
-                id="title-card-task"
-                name="title"
-                required
-                autofocus
-              />
-            </div>
-            <div>
-              <label for="details-card-task">Details:</label>
-              <textarea id="details-card-task" name="details"></textarea>
-            </div>
-            <div>
-              <label for="dueDate-card-task">Due Date:</label>
-              <input
-                type="datetime-local"
-                id="dueDate-card-task"
-                name="dueDate"
-              />
-            </div>
-            <div>
-              <label for="priority-card-task">Priority:</label>
-              <select id="priority-card-task" name="priority">
-                <option value="" disabled selected>Select an option</option>
-                <option value="high">High</option>
-                <option value="medium">Medium</option>
-                <option value="low">Low</option>
-              </select>
-            </div>
-            <button
-              id="submit-button-card-task"
-              type="submit"
-              data-action="submitCardTask"
-            >
-              Submit
-            </button>
-            <button id="cancel-button-card-task" data-action="cancel">
-              Cancel
-            </button>
-          </form>
-        </dialog>
+        <div class="card-container">
+          <h3 class="card-header">Temperature</h3>
+        </div>
       </main>
     </div>
   </body>

@@ -20,9 +20,19 @@ body {
 }
 div.main-wrapper {
   display: grid;
-  grid-template-columns: minmax(250px, 300px) minmax(360px, 100%);
-  grid-template-rows: minmax(100vh, 100%);
+  grid-template-columns: minmax(360px, 100%);
+  grid-template-rows: minmax(10vh, 100%);
   gap: 10px;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  font-size: 1.5rem;
+  gap: 10px;
+}
+input#search {
+  height: 2rem;
 }
 
 /* Card styles */
@@ -43,7 +53,7 @@ div.main-wrapper {
   }
 }
 .card-container {
-  background-color: var(--color-primary-white);
+  background-color: var(--color-white);
   height: max-content;
   min-width: 200px;
   max-width: 360px;
@@ -54,106 +64,12 @@ div.main-wrapper {
   /* cursor: grab; */
   animation: fadeIn 300ms ease-in forwards; /* The animation is triggered when card-container is created. */
 }
-div.card-project-title-container {
-  display: grid;
-  grid-template-columns: 1fr 2rem;
-  gap: 0.8rem;
-}
-.card-project-title-container:hover .card-actions-container {
-  opacity: 0.8;
-}
-div.card-project-title-container .card-actions-container {
-  margin-top: 12px;
-}
-h3.card-project-title {
-  margin-top: 12px;
-  margin-bottom: 0;
-  padding-bottom: 0;
-  letter-spacing: 2px;
-  font-weight: 500;
-}
-
-.card-task-item.add-new-task {
-  text-wrap: nowrap;
-  cursor: pointer;
-  border-radius: 20px;
-  background-color: rgba(68, 67, 66, 0.1);
-  width: 8.5rem;
-  padding-left: 0.4rem;
-  padding-top: 0.1rem;
-  padding-bottom: 0.15rem;
-  transition: box-shadow 250ms ease;
-}
-.card-task-item.add-new-task:hover {
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
-  background-color: rgba(68, 67, 66, 0.2);
-}
-.card-task-item.add-new-task:active {
-  box-shadow: none;
-  background-color: rgba(68, 67, 66, 0.3);
-  transform: translateY(1px);
-}
-.card-actions-container {
-  display: flex;
-  justify-content: space-between;
-  opacity: 0;
-  transition: opacity 200ms ease;
-}
-.card-actions-container img {
-  cursor: pointer;
-}
-.card-task-item:hover .card-actions-container {
-  opacity: 0.8;
-}
-.card-task-item details summary {
-  pointer-events: none;
-}
 a {
   text-decoration: none;
 }
 
 /* Dropdown */
-button.hamburger {
-  width: 3rem;
-}
-button svg {
-  pointer-events: none;
-}
-ul.dropdown-list {
-  display: none;
-  list-style: none;
-  margin-left: 0;
-  padding-left: 0;
-  background-color: var(--color-sidebar-blue);
-  width: fit-content;
-  border-radius: 6px;
-  padding: 8px 8px;
-}
 ul.dropdown-list.visible {
-  display: flex;
-  animation: fadeIn 300ms ease-in forwards; /* The animation is triggered when card-container is created. */
-  flex-direction: column;
-  gap: 6px;
-}
-button.dropdown-button {
-  background: none;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  padding: 4px 6px;
-  color: inherit;
-  letter-spacing: 1px;
-}
-button.dropdown-button:hover {
-  translate: 2px;
-  background-color: var(--color-accents-orange);
-  border-radius: 8px;
-}
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  margin-top: 2px;
+  margin-bottom: 2px;
 }

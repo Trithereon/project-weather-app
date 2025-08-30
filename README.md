@@ -1,4 +1,16 @@
-Template
+# Weather App
 
-Contains a sidebar with navigation and a main-content section.
-Has an event handler module and a UI module with some sample code from a previous project.
+## for The Odin Project
+
+### Lesson Steps
+
+1. Set up a blank HTML document with the appropriate links to your JavaScript and CSS files.
+2. Write the functions that hit the API. You’re going to want functions that can take a location and return the weather data for that location. For now, just `console.log()` the information.
+3. Write the functions that _process_ the JSON data you’re getting from the API and return an object with only the data you require for your app.
+4. Set up a form that will let users input their location and will fetch the weather info (still just `console.log()` it).
+5. Display the information on your webpage!
+   - While you don’t have to, if you wish to display weather icons then there can be a lot of them to import, so have a look at the [dynamic import() function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import).
+   - Unlike plain template strings without an import, [Webpack can read dynamic imports](https://webpack.js.org/api/module-methods/#dynamic-expressions-in-import) and still bundle all the relevant assets.
+6. Add any styling you like!
+7. _Optional_: add a "loading" component that displays from the time the form is submitted until the information comes back from the API. Use DevTools to simulate network speeds.
+8. Push that baby to GitHub and share your solution below!
