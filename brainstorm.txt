@@ -1,0 +1,9 @@
+I want this project to be separated into modular components.
+Maybe something like this structure:
+1. index.js - the entry point, will instantiate app.js
+2. controller.js - the main controller, bringing all components together
+3. template.html
+4. styles.css
+5. /components/search.js - handles the search input
+6. /components/display.js - DOM manipulation to display weather data in the UI
+7. /components/api.js - fetches data from the weather API

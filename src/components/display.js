@@ -1,4 +1,4 @@
-// DOM manipulation module.
+// DOM manipulation module. Renders the weather data in the UI.
 
 export default class UI {
   // Private function, so underscore prefix.

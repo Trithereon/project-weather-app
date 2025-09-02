@@ -45,6 +45,7 @@ div.dropdown {
 }
 ul.dropdown-list {
   position: absolute;
+  z-index: 10; /* To display the dropdown on top of anything with a z-index below 10. */
 }
 
 input#search {
