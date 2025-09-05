@@ -31,4 +31,4 @@ async function fetchWeather(query, dates = "next7days", units = "metric") {
 }
 
 // For console use, make this function global, bypassing webpack.
-window.fetchWeather = fetchWeather;
+// window.fetchWeather = fetchWeather;

@@ -2,14 +2,14 @@
 
 import "./styles.css";
 import "modern-normalize/modern-normalize.css";
-import Search from "./components/search.js";
+import { getQuery } from "./components/search.js";
+import { fetchWeather } from "./components/api.js";
 
-export default class Controller {
-  constructor(rootElement) {
-    // Initialize components.
-    this.search = new Search(
-      rootElement.getElementByID("search"),
-      this.handleSearch,
-    );
+const searchInput = document.getElementById("search");
+searchInput.addEventListener("keydown", (e) => {
+  e.preventDefault();
+  if (e.key === "Enter") {
+    const query = getQuery();
+    fetchWeather(query);
   }
-}
+});
