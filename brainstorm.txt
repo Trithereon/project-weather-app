@@ -15,3 +15,8 @@ Note: each weather data type (temperature, humidity, etc.) gets its own weatherC
 Example request URL:
 https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/montreal%20quebec/next7days?unitGroup=metric&key=39U4T4JP9KSAU8CAEP5CYS87V&contentType=json
 
+
+Processing weather data:
+data.days is an array containing the day objects requested. 
+For today, the length is 1 and the object with all the weather data for the day is contained within array[0].
+- Maybe I could run a forEach() loop onto the data.days array, to extract the data for the selected days.
