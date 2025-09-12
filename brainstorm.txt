@@ -20,3 +20,6 @@ Processing weather data:
 data.days is an array containing the day objects requested. 
 For today, the length is 1 and the object with all the weather data for the day is contained within array[0].
 - Maybe I could run a forEach() loop onto the data.days array, to extract the data for the selected days.
+
+Dropdown menu ideas:
+1. Clicking away from the open menu should close it.

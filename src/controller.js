@@ -27,11 +27,11 @@ dropdown.addEventListener("change", (e) => {
   } else if (e.target.id === "us") {
     settings.metric = !settings.us;
   } else {
-    // Triggered when toggling a date setting.
+    // This else statement is triggered by toggling a date setting.
     if (e.target.checked) {
       dateSettings.forEach((id) => {
         if (id !== e.target.id) {
-          settings[id] = false;
+          settings[id] = false; // Uncheck all other date settings.
         }
       });
     } else settings.today = true; // If all unchecked, check Today (default)
@@ -48,4 +48,13 @@ dropdown.addEventListener("change", (e) => {
   }
 
   setSettings(settings);
+});
+
+// Click away from menu to close it.
+document.addEventListener("click", (e) => {
+  const dropdown = document.querySelector("div.dropdown");
+  const dropdownList = dropdown.querySelector("ul.dropdown-list");
+  if (!dropdown.contains(e.target)) {
+    dropdownList.classList.remove("visible");
+  }
 });
