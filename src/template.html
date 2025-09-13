@@ -23,113 +23,125 @@
     <div class="main-wrapper" id="main-wrapper">
       <!-- Header -->
       <header>
-        <div class="dropdown">
-          <button data-dropdown="toggle">
-            <svg viewBox="0 0 10 8" width="32">
-              <path
-                d="M1 1h8M1 4h 8M1 7h8"
-                stroke="#000"
-                stroke-width="1.5"
-                stroke-linecap="round"
-              />
-            </svg>
-          </button>
-          <ul class="dropdown-list">
-            <li class="dropdown-item">
-              <label class="switch" for="metric">
-                <input type="checkbox" id="metric" checked />
-                <span class="slider round"></span>
-              </label>
-              <span class="setting">Metric</span>
-            </li>
-            <li class="dropdown-item">
-              <label class="switch" for="us">
-                <input type="checkbox" id="us" />
-                <span class="slider round"></span>
-              </label>
-              <span class="setting">US</span>
-            </li>
-            <br />
-            <li class="dropdown-item">
-              <label class="switch" for="today">
-                <input type="checkbox" id="today" checked />
-                <span class="slider round"></span>
-              </label>
-              <span class="setting">Today</span>
-            </li>
-            <li class="dropdown-item">
-              <label class="switch" for="tomorrow">
-                <input type="checkbox" id="tomorrow" />
-                <span class="slider round"></span>
-              </label>
-              <span class="setting">Tomorrow</span>
-            </li>
-            <li class="dropdown-item">
-              <label class="switch" for="next7days">
-                <input type="checkbox" id="next7days" />
-                <span class="slider round"></span>
-              </label>
-              <span class="setting">Next 7 days</span>
-            </li>
-            <li class="dropdown-item">
-              <label class="switch" for="next15days">
-                <input type="checkbox" id="next15days" />
-                <span class="slider round"></span>
-              </label>
-              <span class="setting">Next 15 days</span>
-            </li>
-          </ul>
+        <div class="header-top-line">
+          <div class="dropdown">
+            <button data-dropdown="toggle">
+              <svg viewBox="0 0 10 8" width="32">
+                <path
+                  d="M1 1h8M1 4h 8M1 7h8"
+                  stroke="#000"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </button>
+            <ul class="dropdown-list">
+              <li class="dropdown-item">
+                <label class="switch" for="metric">
+                  <input type="checkbox" id="metric" checked />
+                  <span class="slider round"></span>
+                </label>
+                <span class="setting">Metric</span>
+              </li>
+              <li class="dropdown-item">
+                <label class="switch" for="us">
+                  <input type="checkbox" id="us" />
+                  <span class="slider round"></span>
+                </label>
+                <span class="setting">US</span>
+              </li>
+              <br />
+              <li class="dropdown-item">
+                <label class="switch" for="today">
+                  <input type="checkbox" id="today" checked />
+                  <span class="slider round"></span>
+                </label>
+                <span class="setting">Today</span>
+              </li>
+              <li class="dropdown-item">
+                <label class="switch" for="tomorrow">
+                  <input type="checkbox" id="tomorrow" />
+                  <span class="slider round"></span>
+                </label>
+                <span class="setting">Tomorrow</span>
+              </li>
+              <li class="dropdown-item">
+                <label class="switch" for="next7days">
+                  <input type="checkbox" id="next7days" />
+                  <span class="slider round"></span>
+                </label>
+                <span class="setting">Next 7 days</span>
+              </li>
+              <li class="dropdown-item">
+                <label class="switch" for="next15days">
+                  <input type="checkbox" id="next15days" />
+                  <span class="slider round"></span>
+                </label>
+                <span class="setting">Next 15 days</span>
+              </li>
+            </ul>
+          </div>
+          <label class="search" for="search">Enter City Name: </label>
+          <input type="search" id="search" />
         </div>
-
-        <label for="search">Enter City Name: </label>
-        <input type="search" id="search" />
+        <div class="header-bottom-line"></div>
       </header>
       <!-- Main Content -->
       <main class="main-content" id="main-content">
-        <article class="card-container">
+        <div class="card-container">
           <h2 class="card-header">Current Weather</h2>
           <div class="temp-container">
             <img class="card-icon" src="img/temp.svg" alt="temperature" />
-            <div class="temp">21°C</div>
+            <div class="temp" data-id="temp">21°C</div>
+            <div class="feels-like">feels like</div>
+            <div class="feels-like" data-id="feelsLike">23°C</div>
           </div>
-          <div class="conditions">Partially cloudy</div>
+          <div class="conditions" data-id="conditions">Partially cloudy</div>
           <div class="info-container">
             <div class="info-line">
-              <img class="card-icon" src="img/location.svg" alt="location" />
-              <div class="location">Sapporo</div>
+              <img class="card-icon" src="img/rain.svg" alt="precipitation" />
+              <div class="data">Precipitation</div>
+              <div class="data" data-id="precipProb">20%</div>
+              <div class="data" data-id="precip">3mm</div>
+              <div class="data" data-id="precipType">rain</div>
             </div>
             <div class="info-line">
-              <img class="card-icon" src="img/time.svg" alt="time" />
-              <div class="time">00:30</div>
-            </div>
-            <div class="info-line">
-              <img class="card-icon" src="img/date.svg" alt="date" />
-              <div class="date">Tue, 02 Sep</div>
+              <img class="card-icon" src="img/sun.svg" alt="sunrise" />
+              <div class="data">Sunrise</div>
+              <div class="data" data-id="sunrise">06:39</div>
+              <img class="card-icon" src="img/moon.svg" alt="sunset" />
+              <div class="data">Sunset</div>
+              <div class="data" data-id="sunset">19:16</div>
             </div>
           </div>
-        </article>
-        <article class="card-container">
+        </div>
+        <div class="card-container">
           <h2 class="card-header">Today</h2>
           <div class="temp-container">
             <img class="card-icon" src="img/temp.svg" alt="temperature" />
-            <div class="temp">21°C</div>
+            <div class="temp" data-id="temp">21°C</div>
+            <div class="feels-like">feels like</div>
+            <div class="feels-like" data-id="feelsLike">23°C</div>
           </div>
-          <div class="conditions">Partially cloudy</div>
+          <div class="conditions" data-id="conditions">Partially cloudy</div>
           <div class="info-container">
             <div class="info-line">
-              <img class="card-icon" src="img/location.svg" alt="location" />
-              <div class="location">Sapporo</div>
+              <img class="card-icon" src="img/rain.svg" alt="precipitation" />
+              <div class="data">Precipitation</div>
+              <div class="data" data-id="precipProb">20%</div>
+              <div class="data" data-id="precip">3mm</div>
+              <div class="data" data-id="precipType">rain</div>
             </div>
             <div class="info-line">
-              <img class="card-icon" src="img/time.svg" alt="time" />
-              <div class="time">00:30</div>
-            </div>
-            <div class="info-line">
-              <img class="card-icon" src="img/date.svg" alt="date" />
-              <div class="date">Tue, 02 Sep</div>
+              <img class="card-icon" src="img/sun.svg" alt="sunrise" />
+              <div class="data">Sunrise</div>
+              <div class="data" data-id="sunrise">06:39</div>
+              <img class="card-icon" src="img/moon.svg" alt="sunset" />
+              <div class="data">Sunset</div>
+              <div class="data" data-id="sunset">19:16</div>
             </div>
           </div>
-        </article>
+        </div>
       </main>
     </div>
   </body>

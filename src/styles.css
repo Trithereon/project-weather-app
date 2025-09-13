@@ -26,15 +26,17 @@ div.main-wrapper {
   gap: 10px;
 }
 
+/* Header styles */
 header {
   display: flex;
-  justify-content: center;
-  gap: 10px;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
   margin-top: 10px;
   margin-left: 10px;
   margin-right: 10px;
 }
-header label {
+.search {
   font-size: 1.5rem;
 }
 button[data-dropdown="toggle"] {
@@ -48,9 +50,18 @@ ul.dropdown-list {
   position: absolute;
   z-index: 10; /* To display the dropdown on top of anything with a z-index below 10. */
 }
-
 input#search {
   height: 2rem;
+  margin-left: 12px;
+}
+.header-top-line,
+.header-bottom-line {
+  display: flex;
+}
+.header-bottom-line {
+  gap: 12px;
+  font-size: 1.8rem;
+  align-items: center;
 }
 
 /* Card styles */
@@ -93,13 +104,18 @@ h2 {
 }
 .card-icon {
   width: 25px;
+  height: 25px;
 }
 .temp-container,
 .info-line,
 .info-container {
   display: flex;
-  gap: 10px;
+  gap: 8px;
   align-items: center;
+  flex-wrap: wrap;
+}
+.info-container {
+  gap: 12px;
 }
 .temp {
   font-size: 2rem;

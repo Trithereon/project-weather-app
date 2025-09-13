@@ -1,5 +1,5 @@
 // Weather API fetching module.
-import { formatCity } from "./city";
+
 const API_KEY = "39U4T4JP9KSAU8CAEP5CYS87V";
 const BASE_URL =
   "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline";
@@ -17,9 +17,9 @@ export async function fetchWeather(
       `${BASE_URL}/${query}/${dates}?unitGroup=${units}&key=${API_KEY}&contentType=json`,
     );
     const data = await response.json();
-    const city = data.resolvedAddress;
+
     return {
-      city: formatCity(city),
+      city: data.resolvedAddress,
       currentConditions: data.currentConditions,
       days: data.days,
     };
