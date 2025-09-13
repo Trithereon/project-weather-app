@@ -1,13 +1,5 @@
 // Settings module.
 
-// export function toggleUnits(targetEl) {
-//   const metric = document.getElementById("metric");
-//   const us = document.getElementById("us");
-// if (targetEl.checked) u
-//   metric.checked = !metric.checked;
-//   us.checked = !us.checked;
-// }
-
 export function getSettings() {
   const metric = document.getElementById("metric").checked;
   const us = document.getElementById("us").checked;
