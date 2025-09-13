@@ -6,14 +6,11 @@ import { getQuery } from "./components/search.js";
 import { fetchWeather } from "./components/api.js";
 import { getSettings, setSettings } from "./settings.js";
 
-let datesSetting = "today";
-let unitsSetting = "metric";
-
 const searchInput = document.getElementById("search");
 searchInput.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
     const query = getQuery();
-    console.log(fetchWeather(query, datesSetting, unitsSetting));
+    console.log(fetchWeather(query));
   }
 });
 

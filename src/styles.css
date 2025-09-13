@@ -9,13 +9,14 @@
 
   /* Supporting colors */
   --color-gray: #6b7280;
-  --color-lightblue: #bedaff;
+  --color-lightblue: #bedaff5e;
   --color-cream: #fdf6e3;
   --color-green: #10b981;
+  --color-green-brown: #8a6e1eb3;
 }
 
 body {
-  background-color: var(--color-cream);
+  background-color: var(--color-lightblue);
   color: var(--color-darkblue);
 }
 div.main-wrapper {
@@ -57,38 +58,63 @@ input#search {
   display: flex;
   gap: 15px;
   flex-wrap: wrap;
-  align-content: flex-start;
+  align-content: center;
+  justify-content: center;
   padding-top: 15px;
   letter-spacing: 1px;
 }
 @keyframes fadeIn {
   from {
-    opacity: 0.5;
+    opacity: 0.2;
   }
   to {
     opacity: 1;
   }
 }
 .card-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
   background-color: var(--color-white);
   height: max-content;
-  min-width: 200px;
+  min-width: 180px;
   max-width: 360px;
-  border-radius: 6px;
-  padding: 0 15px;
-  border-left: 2px solid var(--color-orange);
-  box-shadow: 1px 2px 3px rgba(197, 127, 8, 0.2);
-  /* cursor: grab; */
-  animation: fadeIn 300ms ease-in forwards; /* The animation is triggered when card-container is created. */
+  border-radius: 12px;
+  padding: 15px 15px 15px 15px;
+  border-top: 6px solid var(--color-blue);
+  box-shadow: 2px 2px 3px var(--color-green-brown);
+  animation: fadeIn 400ms ease-in forwards; /* The animation is triggered when card-container is created. */
 }
 a {
   text-decoration: none;
+}
+h2 {
+  margin: 0px 0px;
+}
+.card-icon {
+  width: 25px;
+}
+.temp-container,
+.info-line,
+.info-container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.temp {
+  font-size: 2rem;
+}
+.conditions {
+  font-size: 1.2rem;
 }
 
 /* Dropdown */
 ul.dropdown-list.visible {
   margin-top: 2px;
   margin-bottom: 2px;
+}
+.setting {
+  user-select: none;
 }
 
 /* Toggle switch styles */

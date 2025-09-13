@@ -35,4 +35,3 @@ export function setSettings(settings) {
   document.getElementById("next7days").checked = settings.next7days;
   document.getElementById("next15days").checked = settings.next15days;
 }
-/* What if I store my settings in an array? */

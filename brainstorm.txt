@@ -22,4 +22,9 @@ For today, the length is 1 and the object with all the weather data for the day 
 - Maybe I could run a forEach() loop onto the data.days array, to extract the data for the selected days.
 
 Dropdown menu ideas:
-1. Clicking away from the open menu should close it.
+1. Clicking away from the open menu should close it. Done.
+
+How to use settings when building requests:
+1. getSettings() returns an object. 
+2. Maybe I can look through it and find the properties with value=true.
+3. I can then inject those property names to the request string in fetchWeather.
