@@ -1,7 +1,7 @@
 // Search module.
 
 import { fetchWeather } from "./api";
-import { displayHeader } from "./display";
+import { displayCurrentWeather, displayHeader } from "./display";
 import { trimTime } from "./time";
 
 function _getQuery() {
@@ -20,15 +20,20 @@ export function handleSearch(e) {
     const query = _getQuery();
     const request = fetchWeather(query);
     request.then((data) => {
+      // Render the header information line.
+      displayHeader(data);
+
+      // Tests below.
       const time = trimTime(data.currentConditions.datetime);
       const city = data.city;
       const conditions = data.currentConditions.conditions;
-
       console.log(time);
       console.log(city);
       console.log(conditions);
       console.log(data.days[0].datetime);
-      displayHeader(data);
+      console.log(data);
+
+      displayCurrentWeather(data);
     });
   }
 }
