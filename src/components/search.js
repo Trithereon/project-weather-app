@@ -1,10 +1,9 @@
 // Search module.
 
 import { fetchWeather } from "./api";
-import { displayAllCards, displayCard, displayHeader } from "./display";
-import { trimTime } from "./time";
+import { updateDisplay } from "./display";
 
-function _getQuery() {
+export function getQuery() {
   const searchInput = document.getElementById("search");
   const parsedQuery = _parseSearchInput(searchInput);
   return parsedQuery;
@@ -17,27 +16,22 @@ function _parseSearchInput(input) {
 
 export function handleSearch(e) {
   if (e.key === "Enter") {
-    const query = _getQuery();
-    const request = fetchWeather(query);
-    request.then((data) => {
-      // Render the header information line.
-      displayHeader(data);
-
+    const query = getQuery();
+    const response = fetchWeather(query);
+    response.then((data) => {
       // Tests below.
-      const time = trimTime(data.currentConditions.datetime);
-      const city = data.city;
-      const conditions = data.currentConditions.conditions;
-      console.log(time);
-      console.log(city);
-      console.log(conditions);
-      console.log(data.days[0].datetime);
-      console.log(data);
-
-      displayCard(data.currentConditions, "current");
+      // const time = trimTime(data.currentConditions.datetime);
+      // const city = data.city;
+      // const conditions = data.currentConditions.conditions;
+      // console.log(time);
+      // console.log(city);
+      // console.log(conditions);
+      // console.log(data.days[0].datetime);
+      // console.log(data);
       // displayCard(data.days[0], "today");
-      // displayAllCards(data, "tomorrow");
-      // displayAllCards(data, "next7days");
-      displayAllCards(data, "next15days");
+      // displayAllCards(data,'', "tomorrow");
+      // displayAllCards(data, '',"next7days");
+      updateDisplay(data);
     });
   }
 }

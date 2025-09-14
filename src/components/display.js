@@ -10,30 +10,31 @@ import rainImg from "../img/rain.svg";
 import sunImg from "../img/sun.svg";
 import moonImg from "../img/moon.svg";
 import { formatPrecip, formatPrecipType } from "./precip";
+import { getSettings } from "./settings";
 
-export function displayAllCards(data, datesSetting, unitsSetting) {
+export function displayAllCards(data, unitsSetting, datesSetting) {
   const main = document.getElementById("main-content");
   // Reset main content.
   main.innerHTML = "";
 
   // Render the 'Current Weather' card.
-  displayCard(data.currentConditions, "current", unitsSetting);
+  _displayCard(data.currentConditions, unitsSetting, "current");
 
   if (datesSetting === "today") {
     const dataSource = data.days[0];
-    displayCard(dataSource, datesSetting, unitsSetting);
+    _displayCard(dataSource, unitsSetting, datesSetting);
   } else if (datesSetting === "tomorrow") {
     const dataSource = data.days[1];
-    displayCard(dataSource, datesSetting, unitsSetting);
+    _displayCard(dataSource, unitsSetting, datesSetting);
   } else if (datesSetting === "next7days") {
     const daysToDisplay = data.days.slice(1, 8);
     daysToDisplay.forEach((day) => {
-      displayCard(day, datesSetting, unitsSetting);
+      _displayCard(day, unitsSetting, datesSetting);
     });
   } else if (datesSetting === "next15days") {
     const daysToDisplay = data.days.slice(1); // "From 1 to the end".
     daysToDisplay.forEach((day) => {
-      displayCard(day, datesSetting, unitsSetting);
+      _displayCard(day, unitsSetting, datesSetting);
     });
   }
 
@@ -43,7 +44,7 @@ export function displayAllCards(data, datesSetting, unitsSetting) {
   }
 }
 
-export function displayCard(data, datesSetting, unitsSetting) {
+function _displayCard(data, unitsSetting, datesSetting) {
   const d = data;
   let headerTitle;
   if (datesSetting === "current") headerTitle = "Current Weather";
@@ -51,7 +52,7 @@ export function displayCard(data, datesSetting, unitsSetting) {
   else if (datesSetting === "tomorrow") headerTitle = "Tomorrow";
   else if (datesSetting === "next7days" || datesSetting === "next15days")
     headerTitle = formatDate(d.datetime);
-  else throw new Error("Invalid datesSetting used to call displayCard");
+  else throw new Error("Invalid datesSetting used to call _displayCard");
 
   // Format data to be displayed.
   const temp = d.temp + "°C";
@@ -133,6 +134,14 @@ export function displayHeader(data) {
 
   // Append elements to header.
   header.append(imgCity, cityEl, imgTime, timeEl, imgDate, dateEl);
+}
+
+export function updateDisplay(data) {
+  const settings = getSettings().checkedSettings;
+  displayHeader(data);
+  // Using the spread syntax, to enumerate the members of the
+  // array and pass them as arguments in this function call.
+  displayAllCards(data, ...settings);
 }
 
 function _createElement(tag, classes, dataId, text) {

@@ -16,6 +16,20 @@ export async function fetchWeather(
     const response = await fetch(
       `${BASE_URL}/${query}/${dates}?unitGroup=${units}&key=${API_KEY}&contentType=json`,
     );
+
+    // Check if response is not OK (4xx or 5xx responses, such as 400 bad requests)
+    // This triggers if the inputted city value is invalid, for example.
+    if (!response.ok) {
+      const errorText = await response.text(); // Get error message from response
+      if (response.status == 400)
+        alert("City name not found. Please check spelling and try again.");
+      else
+        alert(
+          "Network error. Please see developer console for details, and try again later.",
+        );
+      throw new Error(`HTTP Error ${response.status}: ${errorText}`);
+    }
+
     const data = await response.json();
 
     return {
@@ -24,8 +38,6 @@ export async function fetchWeather(
       days: data.days,
     };
   } catch (err) {
-    console.log(err);
+    throw new Error(err);
   }
 }
-
-window.fetchWeather = fetchWeather;

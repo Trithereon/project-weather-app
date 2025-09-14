@@ -41,3 +41,8 @@ precipProb
 precipType
 sunrise
 sunset
+
+Settings need work:
+1. getSettings() needs to return the two settings that are true, as an array of strings. e.g. ['metric', 'today']
+2. How about getSettings().checkedSettings which would output that array, then I convert it to a string settingsString = "'metric','today'"
+3. I can pass that string as an argument when calling displayAllCards(data, settingsString)

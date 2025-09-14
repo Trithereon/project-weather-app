@@ -1,8 +1,11 @@
 // Menu module.
-import { getSettings, setSettings } from "./settings";
+import { updateDisplay } from "./display";
+import { getSettings, updateSettings } from "./settings";
+import { getQuery } from "./search";
+import { fetchWeather } from "./api";
 
 export function handleMenu(e) {
-  const settings = getSettings();
+  const settings = getSettings().allSettings;
   const dateSettings = ["today", "tomorrow", "next7days", "next15days"];
 
   if (e.target.id === "metric") {
@@ -20,17 +23,12 @@ export function handleMenu(e) {
     } else settings.today = true; // If all unchecked, check Today (default)
   }
 
-  if (e.target.id === "today") {
-    console.log("Today checkbox was checked!");
-  } else if (e.target.id === "tomorrow") {
-    console.log("Tomorrow checkbox was checked!");
-  } else if (e.target.id === "next7days") {
-    console.log("Next 7 Days checkbox was checked!");
-  } else if (e.target.id === "next15days") {
-    console.log("Next 15 Days checkbox was checked!");
-  }
+  updateSettings(settings);
 
-  setSettings(settings);
+  // Fetch and display new data.
+  const query = getQuery();
+  const response = fetchWeather(query);
+  response.then((data) => updateDisplay(data));
 }
 
 export function closeMenu(e) {
