@@ -8,5 +8,3 @@ export async function loadIcon(name) {
     throw new Error(err);
   }
 }
-
-// Converting my static img imports into a dynamic import for practice.
