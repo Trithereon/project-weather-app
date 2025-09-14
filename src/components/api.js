@@ -41,3 +41,6 @@ export async function fetchWeather(
     throw new Error(err);
   }
 }
+
+// Exposing this function to window for direct testing in console.
+// window.fetchWeather = fetchWeather;

@@ -57,3 +57,7 @@ temp (degC)
 feelsLike (degC)
 precip (mm)
 
+I have the app fully functional now. I could embellish it a little, with some dynamically imported icons.
+
+
+

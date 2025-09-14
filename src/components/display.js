@@ -11,7 +11,9 @@ import sunImg from "../img/sun.svg";
 import moonImg from "../img/moon.svg";
 import { formatPrecip, formatPrecipType } from "./precip";
 import { getSettings } from "./settings";
+import { loadIcon } from "./img";
 
+// Evaluate requested display parameters and call for render of appropriate cards.
 export function displayAllCards(data, unitsSetting, datesSetting) {
   const main = document.getElementById("main-content");
   // Reset main content.
@@ -44,6 +46,7 @@ export function displayAllCards(data, unitsSetting, datesSetting) {
   }
 }
 
+// Render weather card.
 function _displayCard(data, unitsSetting, datesSetting) {
   const d = data;
   let headerTitle;
@@ -58,10 +61,10 @@ function _displayCard(data, unitsSetting, datesSetting) {
   let tempUnit;
   let precipUnit;
   if (unitsSetting === "metric") {
-    tempUnit = "°C";
+    tempUnit = " °C";
     precipUnit = " mm";
   } else if (unitsSetting === "us") {
-    tempUnit = "°F";
+    tempUnit = " °F";
     precipUnit = " in";
   } else throw new Error("Invalid unitsSetting caught in _displayCard");
   const temp = d.temp + tempUnit;
@@ -75,6 +78,7 @@ function _displayCard(data, unitsSetting, datesSetting) {
 
   // Create elements.
   const container = _createElement("div", "card-container");
+  const headerLine = _createElement("div", "header-line");
   const header = _createElement("h2", "card-header", "", headerTitle);
   const tempContainer = _createElement("div", "temp-container");
   const imgTemp = _createImage("card-icon", tempImg, "temperature");
@@ -101,8 +105,21 @@ function _displayCard(data, unitsSetting, datesSetting) {
   const sunsetTitle = _createElement("div", "data", "", "Sunset");
   const sunsetEl = _createElement("div", "data", "sunset", sunset);
 
+  // Create img element loaded with dynamic import of svg
+  const iconPathPromise = loadIcon(d.icon);
+  let imgIcon;
+  iconPathPromise
+    .then((svgPath) => {
+      imgIcon = _createImage("weather-icon", svgPath, d.icon);
+    })
+    .then(() => {
+      const headerLine = container.querySelector(".header-line");
+      headerLine.appendChild(imgIcon);
+    });
+
   // Assemble elements and append card to main-content.
   const main = document.getElementById("main-content");
+  headerLine.appendChild(header);
   tempContainer.append(imgTemp, tempEl, feelsLikeEl);
   infoLineP.append(imgRain, precipTitle, precipProbEl, precipEl, precipTypeEl);
   infoLineS.append(
@@ -114,7 +131,7 @@ function _displayCard(data, unitsSetting, datesSetting) {
     sunsetEl,
   );
   infoContainer.append(infoLineP, infoLineS);
-  container.append(header, tempContainer, condEl, infoContainer);
+  container.append(headerLine, tempContainer, condEl, infoContainer);
   main.appendChild(container);
 
   if (unitsSetting === "us") {
@@ -122,6 +139,7 @@ function _displayCard(data, unitsSetting, datesSetting) {
   }
 }
 
+// Render the header bottom line data.
 export function displayHeader(data) {
   const header = document.querySelector(".header-bottom-line");
 
@@ -145,6 +163,7 @@ export function displayHeader(data) {
   header.append(imgCity, cityEl, imgTime, timeEl, imgDate, dateEl);
 }
 
+// Render the header and all weather cards.
 export function updateDisplay(data) {
   const settings = getSettings().checkedSettings;
   displayHeader(data);
