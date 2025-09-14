@@ -1,7 +1,7 @@
 // Search module.
 
 import { fetchWeather } from "./api";
-import { displayCurrentWeather, displayHeader } from "./display";
+import { displayAllCards, displayCard, displayHeader } from "./display";
 import { trimTime } from "./time";
 
 function _getQuery() {
@@ -33,7 +33,11 @@ export function handleSearch(e) {
       console.log(data.days[0].datetime);
       console.log(data);
 
-      displayCurrentWeather(data);
+      displayCard(data.currentConditions, "current");
+      // displayCard(data.days[0], "today");
+      // displayAllCards(data, "tomorrow");
+      // displayAllCards(data, "next7days");
+      displayAllCards(data, "next15days");
     });
   }
 }

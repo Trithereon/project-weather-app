@@ -3,7 +3,7 @@
 export function formatPrecip(precip) {
   let value = precip;
   if (value) {
-    return parseInt(precip) + "mm";
+    return precip.toFixed(1) + "mm";
   } else return "0mm";
 }
 
