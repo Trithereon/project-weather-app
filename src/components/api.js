@@ -6,8 +6,8 @@ const BASE_URL =
 
 export async function fetchWeather(
   query,
-  dates = "next15days",
   units = "metric",
+  dates = "next15days",
 ) {
   // The line below is for use with the search input field. Testing will be in console only.
   // To use the line below, replace "query" with "searchInput" in the fetchWeather arguments.

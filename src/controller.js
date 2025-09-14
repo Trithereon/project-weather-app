@@ -4,9 +4,6 @@ import "./styles.css";
 import "modern-normalize/modern-normalize.css";
 import { handleMenu, closeMenu } from "./components/menu.js";
 import { handleSearch } from "./components/search.js";
-import { displayHeader, displayAllCards } from "./components/display.js";
-import { fetchWeather } from "./components/api.js";
-import { trimTime } from "./components/time.js";
 
 // Handle Search.
 const searchInput = document.getElementById("search");

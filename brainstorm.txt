@@ -46,3 +46,14 @@ Settings need work:
 1. getSettings() needs to return the two settings that are true, as an array of strings. e.g. ['metric', 'today']
 2. How about getSettings().checkedSettings which would output that array, then I convert it to a string settingsString = "'metric','today'"
 3. I can pass that string as an argument when calling displayAllCards(data, settingsString)
+4. No, I will make the array of strings, then use the spread syntax to pass the members as arguments e.g. ...array
+
+Converting values from metric to us:
+1. I can convert the values myself, or make an API request and modify only the units like mm for rain, or degF instead of degC.
+2. Relying on the API to convert the values seems much easier, so I'll go with that, to save time.
+3. So, toggling the units setting must modify a few values in the DOM.
+4. I'll make a full list here, using data-id:
+temp (degC)
+feelsLike (degC)
+precip (mm)
+

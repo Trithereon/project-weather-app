@@ -55,11 +55,20 @@ function _displayCard(data, unitsSetting, datesSetting) {
   else throw new Error("Invalid datesSetting used to call _displayCard");
 
   // Format data to be displayed.
-  const temp = d.temp + "°C";
-  const feelsLike = "feels like " + d.feelslike + "°C";
+  let tempUnit;
+  let precipUnit;
+  if (unitsSetting === "metric") {
+    tempUnit = "°C";
+    precipUnit = " mm";
+  } else if (unitsSetting === "us") {
+    tempUnit = "°F";
+    precipUnit = " in";
+  } else throw new Error("Invalid unitsSetting caught in _displayCard");
+  const temp = d.temp + tempUnit;
+  const feelsLike = "feels like " + d.feelslike + tempUnit;
   const conditions = d.conditions;
   const precipProb = d.precipprob + "%";
-  const precip = formatPrecip(d.precip);
+  const precip = formatPrecip(d.precip) + precipUnit;
   const precipType = formatPrecipType(d.preciptype);
   const sunrise = trimTime(d.sunrise);
   const sunset = trimTime(d.sunset);

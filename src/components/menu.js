@@ -27,7 +27,9 @@ export function handleMenu(e) {
 
   // Fetch and display new data.
   const query = getQuery();
-  const response = fetchWeather(query);
+  if (!query) return; // If there is no query, exit function before fetching.
+  const units = getSettings().checkedSettings[0];
+  const response = fetchWeather(query, units);
   response.then((data) => updateDisplay(data));
 }
 
