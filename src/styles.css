@@ -14,6 +14,10 @@
   --color-green: #10b981;
   --color-green-brown: #8a6e1eb3;
 }
+/* Outline all elements in red for debugging. */
+/* * {
+  outline: 1px solid red !important;
+} */
 
 body {
   background-color: var(--color-lightblue);
@@ -30,11 +34,12 @@ div.main-wrapper {
 header {
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
   gap: 20px;
-  margin-top: 10px;
-  margin-left: 10px;
-  margin-right: 10px;
+  padding-left: 10px;
+  padding-top: 10px;
+  flex-wrap: wrap;
 }
 .search {
   font-size: 1.5rem;
@@ -53,6 +58,10 @@ ul.dropdown-list {
 input#search {
   height: 2rem;
   margin-left: 12px;
+}
+.header-top-line {
+  flex-wrap: wrap;
+  gap: 10px;
 }
 .header-top-line,
 .header-bottom-line {

@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   entry: "./src/index.js",
   output: {
-    filename: "main.js",
+    filename: "[name].[contenthash].js", // Modified from "main.js" for cache-busting.
     path: path.resolve(__dirname, "dist"),
     clean: true,
   },
