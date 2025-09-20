@@ -138,6 +138,9 @@ h2 {
   align-items: center;
   flex-wrap: wrap;
 }
+.info-line .data[data-id="high"] {
+  padding-left: 33px;
+}
 .info-container {
   gap: 12px;
 }

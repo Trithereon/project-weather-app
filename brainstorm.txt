@@ -60,7 +60,8 @@ precip (mm)
 I have the app fully functional now. I could embellish it a little, with some dynamically imported icons.
 
 Users have requested extra metrics:
-1. high/low temp.
-2. moonrise time and location
-3. wind direction and speed.
+1. high/low temp. DONE.
+2. moonrise time and location. IMPOSSIBLE, data unavailable.
+3. wind direction and speed. DONE.
+4. hourly data at the click of a button.
 

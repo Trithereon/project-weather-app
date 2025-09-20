@@ -2,7 +2,7 @@
 import { updateDisplay } from "./display";
 import { getSettings, updateSettings } from "./settings";
 import { getQuery } from "./search";
-import { fetchWeather } from "./api";
+import { weatherStorage } from "./api";
 
 export function handleMenu(e) {
   const settings = getSettings().allSettings;
@@ -29,7 +29,7 @@ export function handleMenu(e) {
   const query = getQuery();
   if (!query) return; // If there is no query, exit function before fetching.
   const units = getSettings().checkedSettings[0];
-  const response = fetchWeather(query, units);
+  const response = weatherStorage.fetchWeather(query, units);
   response.then((data) => updateDisplay(data));
 }
 

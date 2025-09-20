@@ -1,6 +1,6 @@
 // Search module.
 
-import { fetchWeather } from "./api";
+import { weatherStorage } from "./api";
 import { updateDisplay } from "./display";
 import { getSettings } from "./settings";
 
@@ -19,7 +19,7 @@ export function handleSearch(e) {
   if (e.key === "Enter") {
     const query = getQuery();
     const units = getSettings().checkedSettings[0];
-    const response = fetchWeather(query, units);
+    const response = weatherStorage.fetchWeather(query, units);
     response.then((data) => updateDisplay(data));
   }
 }

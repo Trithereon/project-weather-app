@@ -143,7 +143,7 @@ function _displayCard(data, unitsSetting, datesSetting) {
   );
   infoLineW.append(imgWind, windEl);
   infoContainer.append(infoLineP, infoLineS, infoLineW);
-  container.append(headerLine, tempContainer, infoLineT, condEl, infoContainer);
+  container.append(headerLine, condEl, tempContainer, infoLineT, infoContainer);
   main.appendChild(container);
 }
 
