@@ -9,9 +9,11 @@ import tempImg from "../img/temp.svg";
 import rainImg from "../img/rain.svg";
 import sunImg from "../img/sun.svg";
 import moonImg from "../img/moon.svg";
+import windImg from "../img/wind.svg";
 import { formatPrecip, formatPrecipType } from "./precip";
 import { getSettings } from "./settings";
 import { loadIcon } from "./img";
+import { formatWindDir } from "./wind";
 
 // Evaluate requested display parameters and call for render of appropriate cards.
 export function displayAllCards(data, unitsSetting, datesSetting) {
@@ -39,11 +41,6 @@ export function displayAllCards(data, unitsSetting, datesSetting) {
       _displayCard(day, unitsSetting, datesSetting);
     });
   }
-
-  // Convert units to US if selected.
-  if (unitsSetting === "us") {
-    // Send to unit conversion function in another module.
-  }
 }
 
 // Render weather card.
@@ -60,12 +57,15 @@ function _displayCard(data, unitsSetting, datesSetting) {
   // Format data to be displayed.
   let tempUnit;
   let precipUnit;
+  let windSpeedUnit;
   if (unitsSetting === "metric") {
     tempUnit = " °C";
     precipUnit = " mm";
+    windSpeedUnit = " km/h";
   } else if (unitsSetting === "us") {
     tempUnit = " °F";
     precipUnit = " in";
+    windSpeedUnit = " mph";
   } else throw new Error("Invalid unitsSetting caught in _displayCard");
   const temp = d.temp + tempUnit;
   const feelsLike = "feels like " + d.feelslike + tempUnit;
@@ -77,6 +77,8 @@ function _displayCard(data, unitsSetting, datesSetting) {
   const sunset = trimTime(d.sunset);
   const high = "High " + d.tempmax + tempUnit;
   const low = "/ Low " + d.tempmin + tempUnit;
+  const windDir = formatWindDir(d.winddir);
+  const wind = "Wind " + d.windspeed + windSpeedUnit + " " + windDir;
 
   // Create elements.
   const container = _createElement("div", "card-container");
@@ -109,6 +111,9 @@ function _displayCard(data, unitsSetting, datesSetting) {
   const highEl = _createElement("div", "data", "high", high);
   const lowEl = _createElement("div", "data", "low", low);
   const infoLineT = _createElement("div", "info-line");
+  const imgWind = _createImage("card-icon", windImg, "wind");
+  const windEl = _createElement("div", "data", "wind", wind);
+  const infoLineW = _createElement("div", "info-line");
 
   // Create img element loaded with dynamic import of svg
   const iconPathPromise = loadIcon(d.icon);
@@ -136,13 +141,10 @@ function _displayCard(data, unitsSetting, datesSetting) {
     sunsetTitle,
     sunsetEl,
   );
-  infoContainer.append(infoLineP, infoLineS);
+  infoLineW.append(imgWind, windEl);
+  infoContainer.append(infoLineP, infoLineS, infoLineW);
   container.append(headerLine, tempContainer, infoLineT, condEl, infoContainer);
   main.appendChild(container);
-
-  if (unitsSetting === "us") {
-    // Send to unit conversion function in another module.
-  }
 }
 
 // Render the header bottom line data.
