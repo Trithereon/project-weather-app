@@ -60,17 +60,21 @@ input#search {
   margin-left: 12px;
 }
 .header-top-line {
+  display: flex;
   flex-wrap: wrap;
   gap: 10px;
 }
-.header-top-line,
 .header-bottom-line {
-  display: flex;
-}
-.header-bottom-line {
+  display: grid;
+  grid-template-columns: auto 1fr auto 1fr;
   gap: 12px;
-  font-size: 1.8rem;
-  align-items: center;
+  font-size: 1.5rem;
+}
+.header-bottom-line .data[data-id="date"] {
+  grid-column: span 2;
+}
+.header-bottom-line img {
+  justify-self: end;
 }
 
 /* Card styles */
@@ -104,12 +108,13 @@ input#search {
   border-top: 6px solid var(--color-blue);
   box-shadow: 2px 2px 3px var(--color-green-brown);
   animation: fadeIn 400ms ease-in forwards; /* The animation is triggered when card-container is created. */
+  margin: 0 5px;
 }
 a {
   text-decoration: none;
 }
 h2 {
-  margin: 0px 0px;
+  margin: 0;
 }
 .header-line {
   display: flex;

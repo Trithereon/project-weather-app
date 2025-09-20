@@ -6,6 +6,6 @@ export function formatDate(date) {
   // Otherwise, 2025-09-13 might become 2025-09-12,
   // since it's interpreted as UTC, then corrected
   // based on diff between UTC and local time.
-  const formattedDate = format(new Date(date + "T00:00"), "PP");
+  const formattedDate = format(new Date(date + "T00:00"), "eee, PP");
   return formattedDate;
 }

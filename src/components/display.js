@@ -75,6 +75,8 @@ function _displayCard(data, unitsSetting, datesSetting) {
   const precipType = formatPrecipType(d.preciptype);
   const sunrise = trimTime(d.sunrise);
   const sunset = trimTime(d.sunset);
+  const high = "High " + d.tempmax + tempUnit;
+  const low = "/ Low " + d.tempmin + tempUnit;
 
   // Create elements.
   const container = _createElement("div", "card-container");
@@ -104,6 +106,9 @@ function _displayCard(data, unitsSetting, datesSetting) {
   const imgMoon = _createImage("card-icon", moonImg, "sunset");
   const sunsetTitle = _createElement("div", "data", "", "Sunset");
   const sunsetEl = _createElement("div", "data", "sunset", sunset);
+  const highEl = _createElement("div", "data", "high", high);
+  const lowEl = _createElement("div", "data", "low", low);
+  const infoLineT = _createElement("div", "info-line");
 
   // Create img element loaded with dynamic import of svg
   const iconPathPromise = loadIcon(d.icon);
@@ -121,6 +126,7 @@ function _displayCard(data, unitsSetting, datesSetting) {
   const main = document.getElementById("main-content");
   headerLine.appendChild(header);
   tempContainer.append(imgTemp, tempEl, feelsLikeEl);
+  if (datesSetting != "current") infoLineT.append(highEl, lowEl); // Current weather has no tempmax nor tempmin
   infoLineP.append(imgRain, precipTitle, precipProbEl, precipEl, precipTypeEl);
   infoLineS.append(
     imgSun,
@@ -131,7 +137,7 @@ function _displayCard(data, unitsSetting, datesSetting) {
     sunsetEl,
   );
   infoContainer.append(infoLineP, infoLineS);
-  container.append(headerLine, tempContainer, condEl, infoContainer);
+  container.append(headerLine, tempContainer, infoLineT, condEl, infoContainer);
   main.appendChild(container);
 
   if (unitsSetting === "us") {
