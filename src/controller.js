@@ -4,6 +4,7 @@ import "./styles.css";
 import "modern-normalize/modern-normalize.css";
 import { handleMenu, closeMenu } from "./components/menu.js";
 import { handleSearch } from "./components/search.js";
+import { handleChevron } from "./components/display.js";
 
 // Handle Search.
 const searchInput = document.getElementById("search");
@@ -15,3 +16,8 @@ dropdown.addEventListener("change", handleMenu);
 
 // Click away from menu to close it.
 document.addEventListener("click", closeMenu);
+
+// Scroll through hourly data with chevrons.
+document.addEventListener("click", (e) => {
+  if (e.target.className === "chevron") handleChevron(e);
+});

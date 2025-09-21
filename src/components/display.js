@@ -36,7 +36,7 @@ export function displayAllCards(data, unitsSetting, datesSetting) {
       _displayCard(day, unitsSetting, datesSetting);
     });
   } else if (datesSetting === "next15days") {
-    const daysToDisplay = data.days.slice(1); // "From 1 to the end".
+    const daysToDisplay = data.days.slice(1, 15);
     daysToDisplay.forEach((day) => {
       _displayCard(day, unitsSetting, datesSetting);
     });
@@ -67,18 +67,19 @@ function _displayCard(data, unitsSetting, datesSetting) {
     precipUnit = " in";
     windSpeedUnit = " mph";
   } else throw new Error("Invalid unitsSetting caught in _displayCard");
-  const temp = d.temp + tempUnit;
-  const feelsLike = "feels like " + d.feelslike + tempUnit;
+  const temp = Math.round(d.temp) + tempUnit;
+  const feelsLike = "feels like " + Math.round(d.feelslike) + tempUnit;
   const conditions = d.conditions;
   const precipProb = d.precipprob + "%";
   const precip = formatPrecip(d.precip) + precipUnit;
   const precipType = formatPrecipType(d.preciptype);
   const sunrise = trimTime(d.sunrise);
   const sunset = trimTime(d.sunset);
-  const high = "High " + d.tempmax + tempUnit;
-  const low = "/ Low " + d.tempmin + tempUnit;
+  const high = "High " + Math.round(d.tempmax) + tempUnit;
+  const low = "/ Low " + Math.round(d.tempmin) + tempUnit;
   const windDir = formatWindDir(d.winddir);
-  const wind = "Wind " + d.windspeed + windSpeedUnit + " " + windDir;
+  const wind =
+    "Wind " + Math.round(d.windspeed) + windSpeedUnit + " " + windDir;
 
   // Create elements.
   const container = _createElement("div", "card-container");
@@ -145,6 +146,57 @@ function _displayCard(data, unitsSetting, datesSetting) {
   infoContainer.append(infoLineP, infoLineS, infoLineW);
   container.append(headerLine, condEl, tempContainer, infoLineT, infoContainer);
   main.appendChild(container);
+
+  // Render the hourly cards in a container and append to the card-container.
+  // Create the elements and append them to the closest('.card-container')
+  if (datesSetting != "current") {
+    const hourlyContainer = _createElement("div", "hourly-container");
+    const hourCardList = _createElement("div", "hour-card-list");
+    const chevronLeft = _createElement("button", "chevron", "left", "<");
+    const chevronRight = _createElement("button", "chevron", "right", ">");
+    const hours = d.hours;
+    hourlyContainer.appendChild(chevronLeft);
+
+    // Go through hours data and create/append elements for each hour.
+    hours.forEach((hour, index) => {
+      const card = _createElement("div", "hour-card-container", index);
+
+      // Format data.
+      const time = trimTime(hour.datetime);
+      const temp = Math.round(hour.temp) + tempUnit;
+      const precip = hour.precipprob + "%";
+
+      // Create elements
+      const timeEl = _createElement("div", "data", "time", time);
+      const tempEl = _createElement("div", "data", "temp", temp);
+      const imgPrecip = _createImage("card-icon", rainImg, "% precipitation");
+      const precipEl = _createElement("div", "data", "precip", precip);
+
+      // Get weather icon and append children.
+      const iconPathPromise = loadIcon(hour.icon);
+      let imgIcon;
+      iconPathPromise
+        .then((svgPath) => {
+          imgIcon = _createImage("weather-icon", svgPath, hour.icon);
+        })
+        .then(() => {
+          card.append(timeEl, imgIcon, tempEl, imgPrecip, precipEl);
+        });
+
+      // Only make 3 hour cards visible at first.
+      if (index >= 0 && index <= 2) card.classList.add("visible");
+      hourCardList.appendChild(card);
+    });
+    hourlyContainer.appendChild(hourCardList);
+    hourlyContainer.appendChild(chevronRight);
+
+    // Set up chevron actions with initial inline values.
+    hourCardList.dataset.x = "0";
+    hourCardList.dataset.index = "0";
+    hourCardList.style.transform = "translateX(0px);";
+
+    return container.appendChild(hourlyContainer);
+  }
 }
 
 // Render the header bottom line data.
@@ -169,6 +221,28 @@ export function displayHeader(data) {
 
   // Append elements to header.
   header.append(imgCity, cityEl, imgTime, timeEl, imgDate, dateEl);
+}
+
+export function handleChevron(e) {
+  if (e.target.dataset.id === "left") {
+    // Hide left-most card, reveal right-most card.
+    const hourCardList = e.target.nextElementSibling;
+    if (hourCardList.dataset.index >= 1 && hourCardList.dataset.index <= 21) {
+      hourCardList.dataset.index = parseInt(hourCardList.dataset.index) - 1;
+      const index = parseInt(hourCardList.dataset.index);
+      hourCardList.children[index].classList.add("visible");
+      hourCardList.children[index + 3].classList.remove("visible");
+    } else return;
+  } else if (e.target.dataset.id === "right") {
+    // Hide right-most card, reveal left-most card.
+    const hourCardList = e.target.previousElementSibling;
+    if (hourCardList.dataset.index >= 0 && hourCardList.dataset.index <= 20) {
+      hourCardList.dataset.index = parseInt(hourCardList.dataset.index) + 1;
+      const index = parseInt(hourCardList.dataset.index);
+      hourCardList.children[index - 1].classList.remove("visible");
+      hourCardList.children[index + 2].classList.add("visible");
+    } else return;
+  }
 }
 
 // Render the header and all weather cards.

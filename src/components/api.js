@@ -43,7 +43,7 @@ class WeatherStorage {
         currentConditions: data.currentConditions,
         days: data.days,
       };
-
+      console.log(this.weatherData);
       return this.weatherData;
     } catch (err) {
       throw new Error(err);

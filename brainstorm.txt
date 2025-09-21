@@ -63,5 +63,8 @@ Users have requested extra metrics:
 1. high/low temp. DONE.
 2. moonrise time and location. IMPOSSIBLE, data unavailable.
 3. wind direction and speed. DONE.
-4. hourly data at the click of a button.
+4. hourly data at the click of a button. - I wrapped the fetchWeather function in a class, 
+so that I can store the weather data in there and make it accessible to modules without needing to fetch again.
+This is great for the hourly module, since the data is already fetched before the button is clicked.
+Then the hourly button can simply look through the already fetched weather data and generate cards from it.
 
