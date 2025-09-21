@@ -227,21 +227,31 @@ export function handleChevron(e) {
   if (e.target.dataset.id === "left") {
     // Hide left-most card, reveal right-most card.
     const hourCardList = e.target.nextElementSibling;
-    if (hourCardList.dataset.index >= 1 && hourCardList.dataset.index <= 21) {
-      hourCardList.dataset.index = parseInt(hourCardList.dataset.index) - 1;
-      const index = parseInt(hourCardList.dataset.index);
-      hourCardList.children[index].classList.add("visible");
-      hourCardList.children[index + 3].classList.remove("visible");
-    } else return;
+    hourCardList.scrollBy({
+      top: 0,
+      left: -238,
+      behavior: "smooth",
+    });
+    // if (hourCardList.dataset.index >= 1 && hourCardList.dataset.index <= 21) {
+    //   hourCardList.dataset.index = parseInt(hourCardList.dataset.index) - 1;
+    //   const index = parseInt(hourCardList.dataset.index);
+    //   hourCardList.children[index].classList.add("visible");
+    //   hourCardList.children[index + 3].classList.remove("visible");
+    // } else return;
   } else if (e.target.dataset.id === "right") {
     // Hide right-most card, reveal left-most card.
     const hourCardList = e.target.previousElementSibling;
-    if (hourCardList.dataset.index >= 0 && hourCardList.dataset.index <= 20) {
-      hourCardList.dataset.index = parseInt(hourCardList.dataset.index) + 1;
-      const index = parseInt(hourCardList.dataset.index);
-      hourCardList.children[index - 1].classList.remove("visible");
-      hourCardList.children[index + 2].classList.add("visible");
-    } else return;
+    hourCardList.scrollBy({
+      top: 0,
+      left: 238,
+      behavior: "smooth",
+    });
+    // if (hourCardList.dataset.index >= 0 && hourCardList.dataset.index <= 20) {
+    //   hourCardList.dataset.index = parseInt(hourCardList.dataset.index) + 1;
+    //   const index = parseInt(hourCardList.dataset.index);
+    //   hourCardList.children[index - 1].classList.remove("visible");
+    //   hourCardList.children[index + 2].classList.add("visible");
+    // } else return;
   }
 }
 

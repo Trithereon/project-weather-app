@@ -237,26 +237,34 @@ input:checked + .slider:before {
   padding: 15px 0;
   border-top: 6px solid var(--color-blue);
   box-shadow: 2px 2px 3px var(--color-green-brown);
-  animation: fadeIn 400ms ease-in forwards; /* The animation is triggered when the element is created. */
+  animation: fadeIn 400ms ease-in forwards;
+  margin-left: 16px;
 }
 .hourly-container.visible {
   /* copy */
 }
+.hourly-container .chevron {
+  border: none;
+  background: var(--color-blue);
+  opacity: 0.2;
+  width: 60px;
+}
+.hourly-container .chevron:hover {
+  opacity: 1;
+  transition: 400ms;
+}
+.chevron[data-id="left"] {
+  border-radius: 0 50% 50% 0;
+}
+.chevron[data-id="right"] {
+  border-radius: 50% 0 0 50%;
+}
 .hour-card-list {
   display: flex;
   gap: 20px;
-  /* overflow-x: scroll; */
+  overflow-x: scroll;
 }
 .hour-card-container {
-  display: none;
-  /* display: grid;
-  grid-template-columns: auto 1fr;
-  justify-items: center;
-  padding-top: 10px;
-  row-gap: 4px;
-  animation: fadeIn 400ms ease-in forwards; The animation is triggered when the element is created. */
-}
-.hour-card-container.visible {
   display: grid;
   grid-template-columns: auto 1fr;
   justify-items: center;
@@ -264,6 +272,14 @@ input:checked + .slider:before {
   row-gap: 4px;
   animation: fadeIn 400ms ease-in forwards;
 }
+/* .hour-card-container.visible {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  justify-items: center;
+  padding-top: 10px;
+  row-gap: 4px;
+  animation: fadeIn 400ms ease-in forwards;
+} */
 .hour-card-container [data-id="time"],
 .hour-card-container [data-id="temp"],
 .hour-card-container .weather-icon {
