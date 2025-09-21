@@ -37,7 +37,6 @@ header {
   justify-content: center;
   flex-direction: column;
   gap: 20px;
-  padding-left: 10px;
   padding-top: 10px;
   flex-wrap: wrap;
 }
@@ -48,33 +47,35 @@ button[data-dropdown="toggle"] {
   padding-top: 4px;
 }
 div.dropdown {
-  margin-right: 40px;
+  margin-right: 20px;
   text-align: left;
 }
 ul.dropdown-list {
   position: absolute;
-  z-index: 10; /* To display the dropdown on top of anything with a z-index below 10. */
+  z-index: 10;
 }
 input#search {
   height: 2rem;
-  margin-left: 12px;
 }
 .header-top-line {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  justify-content: center;
 }
 .header-bottom-line {
   display: grid;
   grid-template-columns: auto 1fr auto 1fr;
-  gap: 12px;
+  row-gap: 12px;
+  column-gap: 6px;
   font-size: 1.5rem;
+  align-items: center;
 }
 .header-bottom-line .data[data-id="date"] {
-  grid-column: span 2;
+  grid-column: span 3;
 }
-.header-bottom-line img {
-  justify-self: end;
+.header-bottom-line img.card-icon {
+  width: 24px;
 }
 
 /* Card styles */
