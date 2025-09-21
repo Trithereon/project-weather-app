@@ -4,7 +4,7 @@ import "./styles.css";
 import "modern-normalize/modern-normalize.css";
 import { handleMenu, closeMenu } from "./components/menu.js";
 import { handleSearch } from "./components/search.js";
-import { handleChevron } from "./components/display.js";
+import { handleChevron, toggleHourly } from "./components/display.js";
 
 // Handle Search.
 const searchInput = document.getElementById("search");
@@ -20,4 +20,8 @@ document.addEventListener("click", closeMenu);
 // Scroll through hourly data with chevrons.
 document.addEventListener("click", (e) => {
   if (e.target.className === "chevron") handleChevron(e);
+});
+
+document.addEventListener("click", (e) => {
+  if (e.target.className === "hourly-btn") toggleHourly(e);
 });

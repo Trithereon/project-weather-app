@@ -141,6 +141,21 @@ h2 {
 .info-line .data[data-id="high"] {
   padding-left: 33px;
 }
+.info-line.wind {
+  display: grid;
+  grid-template-columns: auto 223px auto;
+}
+.hourly-btn {
+  justify-self: right;
+  width: 70px;
+  height: 26px;
+  border-radius: 8px;
+  letter-spacing: 1px;
+  background: #ccc;
+}
+.data[data-id="wind"] {
+  justify-self: left;
+}
 .info-container {
   gap: 12px;
 }
@@ -226,6 +241,9 @@ input:checked + .slider:before {
 
 /* Hourly styles */
 .hourly-container {
+  display: none;
+}
+.hourly-container.visible {
   justify-content: center;
   display: flex;
   gap: 20px;
@@ -239,9 +257,6 @@ input:checked + .slider:before {
   box-shadow: 2px 2px 3px var(--color-green-brown);
   animation: fadeIn 400ms ease-in forwards;
   margin-left: 16px;
-}
-.hourly-container.visible {
-  /* copy */
 }
 .hourly-container .chevron {
   border: none;

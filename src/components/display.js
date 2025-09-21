@@ -70,7 +70,7 @@ function _displayCard(data, unitsSetting, datesSetting) {
   const temp = Math.round(d.temp) + tempUnit;
   const feelsLike = "feels like " + Math.round(d.feelslike) + tempUnit;
   const conditions = d.conditions;
-  const precipProb = d.precipprob + "%";
+  const precipProb = Math.round(d.precipprob) + "%";
   const precip = formatPrecip(d.precip) + precipUnit;
   const precipType = formatPrecipType(d.preciptype);
   const sunrise = trimTime(d.sunrise);
@@ -114,7 +114,8 @@ function _displayCard(data, unitsSetting, datesSetting) {
   const infoLineT = _createElement("div", "info-line");
   const imgWind = _createImage("card-icon", windImg, "wind");
   const windEl = _createElement("div", "data", "wind", wind);
-  const infoLineW = _createElement("div", "info-line");
+  const infoLineW = _createElement("div", "info-line wind");
+  const hourlyBtn = _createElement("button", "hourly-btn", "hourly", "Hourly");
 
   // Create img element loaded with dynamic import of svg
   const iconPathPromise = loadIcon(d.icon);
@@ -150,6 +151,9 @@ function _displayCard(data, unitsSetting, datesSetting) {
   // Render the hourly cards in a container and append to the card-container.
   // Create the elements and append them to the closest('.card-container')
   if (datesSetting != "current") {
+    // Append hourly button.
+    infoLineW.appendChild(hourlyBtn);
+
     const hourlyContainer = _createElement("div", "hourly-container");
     const hourCardList = _createElement("div", "hour-card-list");
     const chevronLeft = _createElement("button", "chevron", "left", "<");
@@ -164,7 +168,7 @@ function _displayCard(data, unitsSetting, datesSetting) {
       // Format data.
       const time = trimTime(hour.datetime);
       const temp = Math.round(hour.temp) + tempUnit;
-      const precip = hour.precipprob + "%";
+      const precip = Math.round(hour.precipprob) + "%";
 
       // Create elements
       const timeEl = _createElement("div", "data", "time", time);
@@ -253,6 +257,14 @@ export function handleChevron(e) {
     //   hourCardList.children[index + 2].classList.add("visible");
     // } else return;
   }
+}
+
+export function toggleHourly(e) {
+  const parentElement = e.target.closest(".card-container");
+  const hourlyContainer = parentElement.querySelector(".hourly-container");
+  if (hourlyContainer.classList.contains("visible")) {
+    hourlyContainer.classList.remove("visible");
+  } else hourlyContainer.classList.add("visible");
 }
 
 // Render the header and all weather cards.
