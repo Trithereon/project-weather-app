@@ -1,6 +1,6 @@
 @font-face {
   font-family: Lexend;
-  src: url("./fonts/Lexend-VariableFont_wght.ttf");
+  src: url("./fonts/Lexend-Bold.ttf");
 }
 
 :root {
@@ -70,16 +70,6 @@ h1.page-title {
   position: absolute;
   width: 360px;
   height: 130px;
-  /* background: linear-gradient(
-    45deg,
-    rgba(116, 185, 255, 0.4),
-    rgba(116, 185, 255, 0.2)
-  ); */
-  /* background: linear-gradient(
-    45deg,
-    rgba(227, 104, 9, 0.4),
-    rgba(227, 104, 9, 0.2)
-  ); */
   background: linear-gradient(
     45deg,
     rgba(245, 185, 82, 0.6),
@@ -100,11 +90,6 @@ h1.page-title {
     rgba(0, 103, 181, 0.4),
     rgba(0, 103, 181, 0.1)
   );
-  /* background: linear-gradient(
-    -45deg,
-    rgba(0, 130, 181, 0.4),
-    rgba(0, 130, 181, 0.2)
-  ); */
   border-radius: 50%;
   transform: rotate(-15deg);
   backdrop-filter: blur(10px);
