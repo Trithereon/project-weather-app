@@ -23,15 +23,19 @@
     <div class="main-wrapper" id="main-wrapper">
       <!-- Header -->
       <header>
-        <h1 class="page-title">Weather Report</h1>
+        <div class="page-title-container">
+          <div class="oval-back"></div>
+          <div class="oval-fore"></div>
+          <h1 class="page-title">WEATHER REPORT</h1>
+        </div>
         <div class="header-top-line">
           <div class="dropdown">
             <button data-dropdown="toggle">
-              <svg viewBox="0 0 10 8" width="32">
+              <svg viewBox="0 0 10 8" width="28">
                 <path
                   d="M1 1h8M1 4h 8M1 7h8"
                   stroke="#000"
-                  stroke-width="1.5"
+                  stroke-width="1.2"
                   stroke-linecap="round"
                 />
               </svg>
@@ -82,8 +86,8 @@
               </li>
             </ul>
           </div>
-          <label class="search" for="search">Search: </label>
-          <input type="search" id="search" />
+          <label class="search" for="search"> </label>
+          <input type="search" id="search" autofocus placeholder="Search" />
         </div>
         <div class="header-bottom-line"></div>
       </header>

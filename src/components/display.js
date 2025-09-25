@@ -106,9 +106,11 @@ function _displayCard(data, unitsSetting, datesSetting) {
   const imgSun = _createImage("card-icon", sunImg, "sunrise");
   const sunriseTitle = _createElement("div", "data", "", "Sunrise");
   const sunriseEl = _createElement("div", "data", "sunrise", sunrise);
+  const sunriseLine = _createElement("div", "info-line sun");
   const imgMoon = _createImage("card-icon", moonImg, "sunset");
   const sunsetTitle = _createElement("div", "data", "", "Sunset");
   const sunsetEl = _createElement("div", "data", "sunset", sunset);
+  const sunsetLine = _createElement("div", "info-line sun");
   const highEl = _createElement("div", "data", "high", high);
   const lowEl = _createElement("div", "data", "low", low);
   const infoLineT = _createElement("div", "info-line");
@@ -135,14 +137,9 @@ function _displayCard(data, unitsSetting, datesSetting) {
   tempContainer.append(imgTemp, tempEl, feelsLikeEl);
   if (datesSetting != "current") infoLineT.append(highEl, lowEl); // Current weather has no tempmax nor tempmin
   infoLineP.append(imgRain, precipTitle, precipProbEl, precipEl, precipTypeEl);
-  infoLineS.append(
-    imgSun,
-    sunriseTitle,
-    sunriseEl,
-    imgMoon,
-    sunsetTitle,
-    sunsetEl,
-  );
+  sunriseLine.append(imgSun, sunriseTitle, sunriseEl);
+  sunsetLine.append(imgMoon, sunsetTitle, sunsetEl);
+  infoLineS.append(sunriseLine, sunsetLine);
   infoLineW.append(imgWind, windEl);
   infoContainer.append(infoLineP, infoLineS, infoLineW);
   container.append(headerLine, condEl, tempContainer, infoLineT, infoContainer);
