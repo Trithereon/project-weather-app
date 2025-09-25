@@ -1,7 +1,4 @@
 // Main controller module. It brings all the components together.
-
-import "./styles.css";
-import "modern-normalize/modern-normalize.css";
 import { handleMenu, closeMenu } from "./components/menu.js";
 import { handleSearch } from "./components/search.js";
 import { handleChevron, toggleHourly } from "./components/display.js";

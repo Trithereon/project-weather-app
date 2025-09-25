@@ -130,7 +130,7 @@ path {
   stroke: var(--color-verydarkblue);
 }
 div.dropdown {
-  margin-right: 20px;
+  margin-right: 12px;
   text-align: left;
 }
 .dropdown-list {
@@ -156,7 +156,6 @@ input#search {
 .header-top-line {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
   justify-content: center;
 }
 .header-bottom-line {
@@ -327,11 +326,11 @@ ul.dropdown-list.visible {
 }
 
 input:checked + .slider {
-  background-color: rgba(245, 185, 82, 1);
+  background-color: rgb(233, 190, 120);
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px rgba(245, 185, 82, 1);
+  box-shadow: 0 0 1px rgb(233, 190, 120);
 }
 
 input:checked + .slider:before {
